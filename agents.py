@@ -461,6 +461,9 @@ class WumpusEnvironment(XYEnvironment):
 
 
     def execute_action(self, agent, action):
+        self.log = "{}\n #{}{}: {} acted: {}".format(
+                        self.log,"0"*(3-len(str(self.steps))), self.steps, 
+                        agent.__class__.__name__, action)
         if action == 'TurnRight':
             agent.direction = turn_heading(agent.direction, +1)
         elif action == 'TurnLeft':
